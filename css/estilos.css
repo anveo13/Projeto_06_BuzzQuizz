@@ -1,6 +1,7 @@
 /* Tela 1 */
 body{
     font-family: 'Roboto';
+    background: #E5E5E5;
 }
 
 header{
@@ -23,10 +24,93 @@ header{
     position: fixed;
     z-index: 1;
     top: 0;
+}
+.fundo{
+    margin-top: 69px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.corpo{
+    background: blue;
+    width: 80%;
+    height: 955px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 
 }
+.tela-quizzes-pra-criar{
+    width: 100%;
+    height: 181px;
+    background-color: pink;
 
+    background: #FAFAFA;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+
+    color: #B9B9B9;
+}
+
+.criar-quizz{
+    box-sizing: border-box;
+
+    width: 151px;
+    height: 40px;
+    
+    background: #FAFAFA;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+
+    color: #EC362D;
+
+}
+li {
+    position: relative;
+    width: 340px;
+    height: 181px;
+    margin-top: 14px;
+}
+
+.degrade {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+li img {
+    width: 340px;
+    height: 181px;
+}
+
+li span {
+    color: white;
+    position: absolute;
+    font-size: 19px;
+    bottom: 20px;
+    left: 10px;
+}
 
 /* Fim Tela 1 */
 
