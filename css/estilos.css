@@ -1,9 +1,8 @@
 /* Tela 1 */
 body{
     font-family: 'Roboto';
-    background: #E5E5E5;
+    background: #FAFAFA
 }
-
 header{
     font-family: 'Roboto';
     font-style: normal;
@@ -25,6 +24,7 @@ header{
     z-index: 1;
     top: 0;
 }
+
 .fundo{
     margin-top: 69px;
     display: flex;
@@ -32,9 +32,9 @@ header{
     justify-content: center;
 }
 .corpo{
-    background: blue;
-    width: 80%;
-    height: 955px;
+    
+    width: 70%;
+    
 
     display: flex;
     flex-direction: column;
@@ -44,12 +44,12 @@ header{
 .tela-quizzes-pra-criar{
     width: 100%;
     height: 181px;
-    background-color: pink;
 
-    background: #FAFAFA;
+    
     border: 1px dashed #D5D5D5;
     border-radius: 5px;
     box-sizing: border-box;
+    margin-top: 50px;
 
     font-style: normal;
     font-weight: 400;
@@ -85,31 +85,71 @@ header{
     color: #EC362D;
 
 }
+
+p{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    box-sizing: border-box;
+
+    color: #000000;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
 li {
     position: relative;
     width: 340px;
     height: 181px;
-    margin-top: 14px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 .degrade {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
+
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.9)
+    );
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 5px;
 }
 
 li img {
     width: 340px;
     height: 181px;
+    border-radius: 5px;
 }
 
 li span {
-    color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+
+color: #FFFFFF;
     position: absolute;
     font-size: 19px;
     bottom: 20px;
     left: 10px;
+    z-index: 3;
 }
 
 /* Fim Tela 1 */
