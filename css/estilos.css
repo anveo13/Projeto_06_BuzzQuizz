@@ -233,4 +233,112 @@ color: #FFFFFF;
     width:26px;
     height:23px;
   }
+
+  body{
+    font-family: 'Roboto';
+    background: #FAFAFA
+  }
+  header{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 43px;
+  
+    color: #FFFFFF;
+  
+    width: 100%;
+    height: 69px;
+    display: flex;
+    background: red;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+    position: fixed;
+    z-index: 1;
+    top: 0;
+  }
+  
+  /* Tela 3 */
+  
+  .esconder{
+    display: none;
+  }
+  .pagina-titulo {
+    font-size: 23px;
+    font-weight: bold;
+    margin: 130px auto 0 auto;
+    width: 280px;
+  }
+  
+  .quiz-form {
+    width: 600px;
+    height: 256px;
+    background-color: #ffffff;
+    margin: 50px auto;
+    padding: 6px;
+  }
+  
+  .input-form {
+    width: 564px;
+    height: 46px;
+    margin-top: 10px;
+    margin-left: 15px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+  }
+  
+  .input-form::placeholder {
+    font-size: 19px;
+    color: #bababa;
+    font-style: italic;
+    padding: 20px;
+  }
+  
+  .botaoCriarPerguntas button {
+    width: 368px;
+    height: 54px;
+    border-radius: 15px;
+    background-color: #ec362d;
+    font-size: 21px;
+    color: #fff5f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px auto;
+    border: none;
+  }
+  
+  .questionario{
+      background-color: #ffffff;
+      width: 600px;
+      margin: 50px auto;
+      padding: 6px;
+  }
+  
+  .perguntas-respostas p {
+     font-size: 20px;
+     margin-left: 15px;
+     margin-top:10px;
+     margin-bottom: 5px;
+  }
+  
+  .resposta-incorreta{
+    padding-bottom: 20px;
+  }
+  
+  .perguntas-icons{
+   display:flex;
+   justify-content: space-between;
+   background-color: #ffffff;
+   width:601px;
+   height:74px;
+   margin-top: 10px;
+  }
+  
+  .perguntas-icons img{
+    width:26px;
+    height:23px;
+  }
   /* Fim Tela 3 */
