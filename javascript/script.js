@@ -16,6 +16,13 @@ function pegaQuizes(resposta) {
 }; 
 
 /* esconder quiz */
+function criarQuizz(){
+  const elemento = document.querySelector(".tela2");
+	elemento.classList.remove("esconder");
+
+  const elemento1 = document.querySelector(".tela-quizzes-pra-criar");
+	elemento1.classList.add("esconder");
+}
 
 let perguntas = 0;
 

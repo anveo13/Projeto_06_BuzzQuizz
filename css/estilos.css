@@ -262,7 +262,7 @@ color: #FFFFFF;
   
   /* Tela 3 */
   
-  .esconder, {
+  .esconder {
     display: none;
   }
   .pagina-titulo {
