@@ -11,9 +11,11 @@ function pegaQuizes(resposta) {
                                     <div class="degrade"></div>
                                     <img src=${quiz.image}>
                                     <span>${quiz.title}</span>
-                                </li>`
+                                   </li>`
     }); 
 }; 
+
+/* esconder quiz */
 
 let perguntas = 0;
 
