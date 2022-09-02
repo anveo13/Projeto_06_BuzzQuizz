@@ -1,194 +1,184 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuzzQuizz</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BuzzQuizz</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/estilos.css">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
-</head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    </head>
 
-<body>
-    <!-- Tela 1 -->
-    <header>
-        <div class="caixa-vermelha">
-            BuzzQuizz
-        </div>
-    </header>
-    <div class="fundo">
-        <div class="corpo">
-            <div class="tela-quizzes-pra-criar">
-                Você não criou nenhum <br>
-                quizz ainda :(
-                <button onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
+    <body>
+        <!-- Tela 1 -->
+        <header>
+            <div class="caixa-vermelha">
+                BuzzQuizz
             </div>
-
-            <div class="tela-quizzes-api">
-                <div class="quizzes">
-                    <p>Todos os Quizzes</p>
-                    <ul>
-                    </ul>
+        </header>
+        <div class="fundo">
+            <div class="corpo">
+                <div class="tela-quizzes-pra-criar">
+                    Você não criou nenhum <br>
+                    quizz ainda :(
+                    <button onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
                 </div>
+
+                <div class="tela-quizzes-api">
+                    <div class="quizzes">
+                        <p>Todos os Quizzes</p>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+
+
             </div>
-
-
-        </div>
         <div class="tela2 esconder">
-            <div class="pagina-titulo ">
-                Comece pelo começo
-            </div>
-            <div class="quiz-form ">
-
-                <div class="inicioQuiz">
-                    <input type="text" class="input-form" placeholder="Título do seu quizz">
+                <div class="pagina-titulo ">
+                    Comece pelo começo
                 </div>
+                <div class="quiz-form ">
 
-                <div class="inicioQuiz">
-                    <input type="text" class="input-form" placeholder="URL da imagem do seu quizz">
-                </div>
+                    <div class="inicioQuiz">
+                        <input type="text" class="input-form" placeholder="Título do seu quizz">
+                    </div>
 
-                <div class="inicioQuiz">
-                    <input type="text" class="input-form" placeholder="Quantidade de perguntas do quizz">
-                </div>
+                    <div class="inicioQuiz">
+                        <input type="text" class="input-form" placeholder="URL da imagem do seu quizz">
+                    </div>
 
-                <div class="inicioQuiz">
-                    <input type="text" class="input-form" placeholder="Quantidade de níveis do quiz">
-                </div>
+                    <div class="inicioQuiz">
+                        <input type="text" class="input-form" placeholder="Quantidade de perguntas do quizz">
+                    </div>
 
-                <div class="botaoCriarPerguntas">
-                    <button onclick="criarPerguntas()">Prosseguir para criar perguntas</button>
+                    <div class="inicioQuiz">
+                        <input type="text" class="input-form" placeholder="Quantidade de níveis do quiz">
+                    </div>
+
+                    <div class="botaoCriarPerguntas">
+                        <button onclick="criarPerguntas()">Prosseguir para criar perguntas</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Fim Tela 1 -->
-    <!--Tela 2-->
+        <!-- Fim Tela 1 -->
+        <!--Tela 2-->
 
-    <div class="banner-fundo">
-        <h1>oooooooooooooooooooooooooooo </h1>
-    </div>
-    <div class="tela22">
-        <div class=" container-perguntas">
-            <div class="box-perguntas">
-
-
-                <div class="titulo-pergunta1">
-                    <h2>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
-                </div>
-                <div class="alternativa-perguntas">
-                    <div class="alternativas">
-                        <img src="imagens/harry.png">
-                        <p>ssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-                    </div>
-
-                    <div class="alternativas">
-                        <img src="imagens/harry.png">
-                        <p>ssssssssssssssssssssssssssssssssssssssssssssssss</p>
-                    </div>
-
-                    <div class="alternativas">
-                        <img src="imagens/harry.png">
-                        <p>ssssssssssssssssssssssssssssssssssss</p>
-                    </div>
-
-
-                    <div class="alternativas">
-                        <img src="imagens/harry.png">
-                        <p>ssssssssssssssssssssssssssss</p>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-
+        <div class="banner-fundo">
+            <h1>oooooooooooooooooooooooooooo </h1>
         </div>
+        <div class="tela22">
+            <div class=" container-perguntas">
+                <div class="box-perguntas">
 
 
-        <div class="quiz-finalizado esconder">
-
-            <div class="titulo-quiz-finalizado">
-
-                <h2>aaaaaaaaaaaaaaa</h2>
-            </div>
-            <div class="resultado">
-                <img src="/imagens/image 10.png">
-                <p>eeessssssssssssssssssssssssssssseeeeeee</p>
-            </div>
-
-        </div>
-
-        <div class="botoes-navegar esconder">
-
-            <button class="botao-reiniciar">Reiniciar Quiz</button>
-
-            <button class="voltar-home"> Voltar para home</button>
-
-
-        </div>
-
-    </div>
-
-
-    <!--Fim Tela 2-->
-
-    <!-- Tela 3 -->
-    <div class="criar-quiz-container">
-
-
-
-        <div class="criar-perguntas esconder">
-            <div class="pagina-titulo">
-                Crie suas perguntas
-            </div>
-            <div class="questionario">
-                <div class="perguntas-respostas">
-                    <p>Pergunta 1</p>
-                    <div class="perguntasQuiz">
-                        <input type="text" class="input-form texto-quiz" placeholder="Texto da pergunta">
-                        <input type="text" class="input-form cor" placeholder="Cor de fundo da pergunta">
+                    <div class="titulo-pergunta1">
+                        <h2>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
                     </div>
-
-                </div>
-
-                <div class="perguntas-respostas">
-                    <p>Resposta correta</p>
-
-
-                    <div class="respostasQuiz">
-                        <input type="text" class="input-form" placeholder="Resposta correta">
-                        <input type="text" class="input-form" placeholder="URL da imagem">
-                    </div>
-                </div>
-
-                <div class="perguntas-respostas">
-                    <p>Resposta incorreta</p>
-
-                    <div class="respostasQuiz">
-                        <div class="resposta-incorreta">
-                            <input type="text" class="input-form" placeholder="Resposta incorreta 1">
-                            <input type="text" class="input-form" placeholder="URL da imagem 1">
+                    <div class="alternativa-perguntas">
+                        <div class="alternativas">
+                            <img src="imagens/harry.png">
+                            <p>ssssssssssssssssssssssssssssssssssssssssssssssssss</p>
                         </div>
 
-                        <div class="resposta-incorreta">
-                            <input type="text" class="input-form" placeholder="Resposta incorreta 2">
-                            <input type="text" class="input-form" placeholder="URL da imagem 2">
+                        <div class="alternativas">
+                            <img src="imagens/harry.png">
+                            <p>ssssssssssssssssssssssssssssssssssssssssssssssss</p>
                         </div>
 
-                        <div class="resposta-incorreta">
-                            <input type="text" class="input-form" placeholder="Resposta incorreta 3">
-                            <input type="text" class="input-form" placeholder="URL da imagem 3">
+                        <div class="alternativas">
+                            <img src="imagens/harry.png">
+                            <p>ssssssssssssssssssssssssssssssssssss</p>
                         </div>
+
+
+                        <div class="alternativas">
+                            <img src="imagens/harry.png">
+                            <p>ssssssssssssssssssssssssssss</p>
+                        </div>
+
+
                     </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <div class="quiz-finalizado esconder">
+
+                <div class="titulo-quiz-finalizado">
+
+                    <h2>aaaaaaaaaaaaaaa</h2>
+                </div>
+                <div class="resultado">
+                    <img src="/imagens/image 10.png">
+                    <p>eeessssssssssssssssssssssssssssseeeeeee</p>
+                </div>
+
+            </div>
+
+            <div class="botoes-navegar esconder">
+
+                <button class="botao-reiniciar">Reiniciar Quiz</button>
+
+                <button class="voltar-home"> Voltar para home</button>
+
+
+            </div>
+
+        </div>
+
+
+        <!--Fim Tela 2-->
+
+        <!-- Tela 3 -->
+        <div class="criar-quiz-container">
+
+            <div class="criar-quiz">
+                <div class="pagina-titulo">
+                    Comece pelo começo
+                </div>
+                <div class="quiz-form">
+
+                    <div class="inicioQuiz">
+                        <input type="text" class="input-form titulo-quiz" placeholder="Título do seu quizz">
+                    </div>
+
+                    <div class="inicioQuiz">
+                        <input type="text" class="input-form img-quiz" placeholder="URL da imagem do seu quizz">
+                    </div>
+
+                    <div class="inicioQuiz">
+                        <input type="text" class="input-form qtd-perguntas"
+                            placeholder="Quantidade de perguntas do quizz">
+                    </div>
+
+                    <div class="inicioQuiz">
+                        <input type="text" class=" input-form qtd-niveis" placeholder="Quantidade de níveis do quiz">
+                    </div>
+
+                    <div class="botaoCriarPerguntas">
+                        <button onclick="criarPerguntas()">Prosseguir para criar perguntas</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="criar-perguntas esconder-cadastrar-quiz">
+                <div class="pagina-titulo">
+                    Crie suas perguntas
+                </div>
+                <div class="questionario">
 
                     <div class="perguntas-respostas">
                         <div class="perguntas-icons">
@@ -201,16 +191,51 @@
                         </div>
                     </div>
                 </div>
+                <div class="botaoCriarPerguntas">
+                    <button onclick="criarNiveis()">Prosseguir para criar níveis</button>
+                </div>
             </div>
-            <div class="botaoCriarPerguntas">
-                <button onclick="criarNiveis()">Prosseguir para criar níveis</button>
+
+            <div class="criar-niveis esconder-cadastrar-quiz">
+                <div class="pagina-titulo">
+                    Agora, decida os níveis
+                </div>
+
+                <div class="questionario">
+                    <div class="perguntas-respostas">
+                        <p>Nível 1</p>
+
+                        <div class="perguntasQuiz">
+                            <input type="text" class="input-form" placeholder="Título do nível">
+                            <input type="text" class="input-form" placeholder="% de acerto mínima">
+                            <input type="text" class="input-form" placeholder="URL da imagem do nível">
+                            <input type="text" class="input-form" placeholder=" Descrição do nível">
+                        </div>
+                    </div>
+
+                    <div class="perguntas-respostas">
+                        <div class="perguntas-icons">
+                            <p>Nível 2</p>
+                            <img src="imagens/Vector copy.jpg" onclick="">
+                        </div>
+                        <div class="perguntas-icons">
+                            <p>Nível 3</p>
+                            <img src="imagens/Vector copy.jpg" onclick="">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="botaoCriarPerguntas">
+                    <button onclick="criarNiveis()">Finalizar Quiz</button>
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- Fim Tela 3 -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-    <script src="javascript/script.js"></script>
-</body>
+
+        </div> <!-- container -->
+        <!-- Fim Tela 3 -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+        <script src="javascript/script.js"></script>
+    </body>
 
 </html>

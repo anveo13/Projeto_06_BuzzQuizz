@@ -24,6 +24,21 @@ function criarQuizz(){
 	elemento1.classList.add("esconder");
 }
 
+let acertos = 0;
+let cliques = 0;
+let idQuizz;
+let quizz;
+
+function comparador () { 
+	return Math.random() - 0.5; 
+}
+
+function iniciarPagina () {
+    window.scrollTo(0,0);
+    buscarQuizzes();
+}
+
+// Inicio Tela 3
 let perguntas = 0;
 
 function validURL(str) {
@@ -52,7 +67,6 @@ function criarPerguntas() {
     nivel: Number(elementoQtdNiveis.value),
   };
 
-  
   // validar
   if (validarForm(novoQuiz)) {
     alert("Preencha os dados corretamente");
@@ -60,10 +74,12 @@ function criarPerguntas() {
     perguntas = novoQuiz.perguntas;
 
     const divQuizForm = document.querySelector(".criar-quiz");
-    const divCriarPerguntas = document.querySelector(".esconder");
+    const divCriarPerguntas = document.querySelector(".esconder-cadastrar-quiz");
 
-    divQuizForm.classList.add("esconder");
-    divCriarPerguntas.classList.remove("esconder");
+    divQuizForm.classList.add("esconder-cadastrar-quiz");
+    divCriarPerguntas.classList.remove("esconder-cadastrar-quiz");
+
+    renderizarPerguntas();
   }
 }
 
@@ -80,34 +96,60 @@ function validarForm(novoQuiz) {
     formInvalido = true;
   }
 
-  return formInvalido
+  return formInvalido;
 }
 
-function renderizarPerguntas(){
-    
-    const div = document.querySelector('.questionario');
+function renderizarPerguntas() {
+  const div = document.querySelector(".questionario");
 
-    div.innerHTML = '';
+  div.innerHTML = "";
 
-    for(let i = 0; i < perguntas; i++){
+  for (let i = 0; i < perguntas; i++) {
+    div.innerHTML =
+      div.innerHTML +
+      `
+      <div class="perguntas-respostas">
+        <p>Pergunta ${i + 1}</p>
+        
+        <div class="perguntasQuiz">
+            <input type="text" class="input-form texto-quiz" placeholder="Texto da pergunta">
+            <input type="text" class="input-form cor" placeholder="Cor de fundo da pergunta">
+        </div>
+     </div>
+        
+    <div class="perguntas-respostas">
+        <p>Resposta correta</p>
+         
+      
+         <div class="respostasQuiz">
+            <input type="text" class="input-form" placeholder="Resposta correta">
+            <input type="text" class="input-form" placeholder="URL da imagem">
+        </div>
+    </div>
 
-        div.innerHTML = div.innerHTML + `
-            
+        <div class="perguntas-respostas">
+          <p>Resposta incorreta</p>
+
+          <div class="respostasQuiz">
+             <div class="resposta-incorreta">
+                <input type="text" class="input-form" placeholder="Resposta incorreta 1">
+                <input type="text" class="input-form" placeholder="URL da imagem 1">
+             </div>
+
+             <div class="resposta-incorreta">
+                <input type="text" class="input-form" placeholder="Resposta incorreta 2">
+                <input type="text" class="input-form" placeholder="URL da imagem 2">
+              </div>
+
+             <div class="resposta-incorreta">
+                <input type="text" class="input-form" placeholder="Resposta incorreta 3">
+                <input type="text" class="input-form" placeholder="URL da imagem 3">
+              </div>
+           </div>
+       
         `;
-    }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 function criarNiveis() {
   const divCriarPerguntas = document.querySelector(".criar-perguntas");
@@ -117,29 +159,6 @@ function criarNiveis() {
   divCriarNivel.classList.remove("esconder");
 }
 
-
 function adicionarQuiz() {
-  // const promessa = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoQuiz);
-  // promessa.then( );
-  // promessa.catch( )
 }
-
-function deuErro(erro){
-  alert('Algo deu errado, a receita não foi salva!');
-
-}
-
-
-let acertos = 0;
-let cliques = 0;
-let idQuizz;
-let quizz;
-
-function comparador () { 
-	return Math.random() - 0.5; 
-}
-
-function iniciarPagina () {
-    window.scrollTo(0,0);
-    buscarQuizzes();
-}
+// Fim Tela 3
