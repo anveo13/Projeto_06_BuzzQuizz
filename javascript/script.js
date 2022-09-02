@@ -1,5 +1,5 @@
 /* buscar quizzes */
-const listaQuizzes = document.querySelector("ul");
+const listaQuizzes = document.querySelector(".alto");
 
 const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`);
 promessa.then(pegaQuizes);

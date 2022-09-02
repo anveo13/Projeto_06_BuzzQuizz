@@ -29,10 +29,20 @@
                 <button onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
             </div>
 
+            <div class="meus-quizzes">
+                <div class="titulo-botao esconder">
+                    <p>Seus Quizzes</p>
+                    <ion-icon name="add-circle-sharp" style="font-size: 34px; color: red;"onclick="criarQuizz()"></ion-icon>
+                </div>
+                <ul class="quizz-criado esconder">
+                </ul>
+            </div>
+            
+
             <div class="tela-quizzes-api">
                 <div class="quizzes">
                     <p>Todos os Quizzes</p>
-                    <ul>
+                    <ul class="alto">
                     </ul>
                 </div>
             </div>
