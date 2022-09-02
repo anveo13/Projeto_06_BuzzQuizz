@@ -22,6 +22,7 @@ function criarQuizz(){
 
   const elemento1 = document.querySelector(".corpo");
 	elemento1.classList.add("esconder");
+  
 }
 
 let acertos = 0;
