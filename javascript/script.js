@@ -1,5 +1,3 @@
-
-
 /* buscar quizzes */
 const listaQuizzes = document.querySelector("ul");
 
@@ -22,7 +20,7 @@ function criarQuizz(){
   const elemento = document.querySelector(".tela2");
 	elemento.classList.remove("esconder");
 
-  const elemento1 = document.querySelector(".tela-quizzes-pra-criar");
+  const elemento1 = document.querySelector(".corpo");
 	elemento1.classList.add("esconder");
 }
 
