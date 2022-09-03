@@ -30,9 +30,20 @@ function criarQuizz(){
   const elemento1 = document.querySelector(".corpo");
 	elemento1.classList.add("esconder");
 }
+// esconder tela 1 e entrar tela 2
 
+function entrarQuizz (element) {
+  
+  window.scrollTo(0,0);
+  document.querySelector(".corpo").classList.add("esconder");
+  document.querySelector(".criar-quiz-container").classList.add("esconder");
+  document.querySelector(".segunda-tela").classList.remove("esconder");
+  idQuizz = element.getAttribute("id");
+    buscarQuizz(idQuizz);
+  
+}
 
-
+// 
 // tela 2
 
 
@@ -61,16 +72,7 @@ function buscarQuizz (id) {
 
 
 
-function entrarQuizz (element) {
-  
-  window.scrollTo(0,0);
-  document.querySelector(".corpo").classList.add("esconder");
-  document.querySelector(".criar-quiz-container").classList.add("esconder");
-  document.querySelector(".segunda-tela").classList.remove("esconder");
-  idQuizz = element.getAttribute("id");
-    buscarQuizz(idQuizz);
-  
-}
+
 
 
 
