@@ -168,33 +168,45 @@ color: #FFFFFF;
 .tela22{ 
     
     width: 759px;
-    height: auto;
+    
     margin: 0 auto;
 }
 
 .banner-fundo{
     
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(/imagens/harry.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 175px;
-    margin-top:69px;    
-    margin-bottom: 55px;
-    
+    height: 227px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.bannerImagem{
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
 
-.banner-fundo h1{
-    text-align: center;
-    font-size:39px;
-    font-weight: 700;   
-    line-height: 27px;
-    word-break: break-word;
-    color: #ffffff;
+}
+.banner-fundo img {
     
+    width: 100%;
+    height: 227px;
+    object-fit: cover;
+    position: absolute;
+
+
+}
+.banner-fundo h2{
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 46px;
+    color: #FFFFFF;
+    position: absolute;
+    z-index: 2;
+    word-break: break-all;
 }
 .box-perguntas{
     
@@ -347,30 +359,14 @@ color: #FFFFFF;
     justify-content: center;
     border: none;
     color: #818181;
-    background-color: #FFFFFF;
+    background-color: #fafafa;
 }
 
 
 .escondido{
     display: none;
 }
-@media (max-width: 1100px)
-{
-    .tela22{ 
-        width: 100%;
-    }
-    .alternativa-perguntas {
-        width: 80%;
-        background-color: red;
-        
-    }
-  .alternativa-perguntas img {
-    width: 50%;
-    aspect-ratio: 1;
-   
-    object-fit: contain;
-  }
-}
+
 /* Fim Tela 2 */
 
 /* Tela 3 */
