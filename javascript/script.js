@@ -1,4 +1,5 @@
 /* buscar quizzes */
+
 const listaQuizzes = document.querySelector("ul");
 
 const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`);
@@ -30,22 +31,13 @@ function criarQuizz(){
   const elemento1 = document.querySelector(".corpo");
 	elemento1.classList.add("esconder");
 }
-// esconder tela 1 e entrar tela 2
 
-function entrarQuizz (element) {
-  
-  window.scrollTo(0,0);
-  document.querySelector(".corpo").classList.add("esconder");
-  document.querySelector(".criar-quiz-container").classList.add("esconder");
-  document.querySelector(".segunda-tela").classList.remove("esconder");
-  idQuizz = element.getAttribute("id");
-    buscarQuizz(idQuizz);
-  
-}
 
-// 
+
 // tela 2
-
+function comparador () { 
+	return Math.random() - 0.5; 
+}
 
   
 
@@ -59,9 +51,38 @@ function exibirQuizz (resposta){
                <h2>${quiz.title}</h2>`;
 
 
-        
-    
+                const container2 = document.querySelector(".conteudoPerguntasTela2");
+                      container2.innerHTML = "";
+               for (let i = 0; i < quiz.questions.length; i++) {
+                let respostas = ""; 
+                
+               
+               
+                for (let j = 0; j < quiz.questions[i].answers.length; j++) {
+                  
+                  
+                respostas += `
+                <div class="alternativas">
+                    <img src="${quiz.questions[i].answers[j].image}">
+                    <p class="texto-pergunta">${quiz.questions[i].answers[j].text}</p>
+                </div>`; 
+            }
+
+            container2.innerHTML += `
+            <section class="container-perguntas -${i + 1}">
+                <div class="titulo-perguntas" style="background-color:${quiz.questions[i].color};">
+                    <h2>${quiz.questions[i].title}</h2>
+                </div>
+                <div class="alternativa-perguntas">
+                    ${respostas}
+                </div>
+            </section>`
+          } 
 }
+
+ 
+ 
+
 
 
 function buscarQuizz (id) {
@@ -72,7 +93,16 @@ function buscarQuizz (id) {
 
 
 
-
+function entrarQuizz (element) {
+  
+  window.scrollTo(0,0);
+  document.querySelector(".corpo").classList.add("esconder");
+  document.querySelector(".criar-quiz-container").classList.add("esconder");
+  document.querySelector(".segunda-tela").classList.remove("esconder");
+  idQuizz = element.getAttribute("id");
+    buscarQuizz(idQuizz);
+  
+}
 
 
 
