@@ -3,17 +3,24 @@ const listaQuizzes = document.querySelector(".alto");
 
 const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`);
 promessa.then(pegaQuizes);
-    
+ 
 function pegaQuizes(resposta) {
     arrayQuizes = resposta.data;
     arrayQuizes.forEach(quiz => {
         listaQuizzes.innerHTML += `<li>
-                                    <div class="degrade"></div>
+                                    <div class="degrade" id="${quiz.id}" onclick="entrarQuizz(this)"></div>
                                     <img src=${quiz.image}>
                                     <span>${quiz.title}</span>
                                    </li>`
     }); 
 }; 
+
+
+
+
+        
+
+
 
 /* esconder quiz */
 function criarQuizz(){
@@ -22,22 +29,56 @@ function criarQuizz(){
 
   const elemento1 = document.querySelector(".corpo");
 	elemento1.classList.add("esconder");
+}
+// esconder tela 1 e entrar tela 2
+
+function entrarQuizz (element) {
+  
+  window.scrollTo(0,0);
+  document.querySelector(".corpo").classList.add("esconder");
+  document.querySelector(".criar-quiz-container").classList.add("esconder");
+  document.querySelector(".segunda-tela").classList.remove("esconder");
+  idQuizz = element.getAttribute("id");
+    buscarQuizz(idQuizz);
   
 }
 
-let acertos = 0;
-let cliques = 0;
-let idQuizz;
-let quizz;
+// 
+// tela 2
 
-function comparador () { 
-	return Math.random() - 0.5; 
+
+  
+
+function exibirQuizz (resposta){
+   quiz = resposta.data;
+    const bannerQuizz = document.querySelector(".banner-fundo");
+               
+               bannerQuizz.innerHTML +=  `
+               <div class="bannerImagem"></div>
+               <img src=${quiz.image}>
+               <h2>${quiz.title}</h2>`;
+
+
+        
+    
 }
 
-function iniciarPagina () {
-    window.scrollTo(0,0);
-    buscarQuizzes();
+
+function buscarQuizz (id) {
+  const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/" + id);
+        promise.then(exibirQuizz);
 }
+  
+
+
+
+
+
+
+
+// fim tela 2
+
+
 
 // Inicio Tela 3
 let perguntas = 0;
