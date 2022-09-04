@@ -50,21 +50,25 @@ function exibirQuizz (resposta){
                       container2.innerHTML = "";
                for (let i = 0; i < quiz.questions.length; i++) {
                 let respostas = ""; 
-                
-               
-               
-                for (let j = 0; j < quiz.questions[i].answers.length; j++) {
-                  
-                  
+                  quiz.questions[i].answers.sort(comparador);
+
+               for (let j = 0; j < quiz.questions[i].answers.length; j++) {
+                const ehCorreta = quiz.questions[i].answers[j].isCorrectAnswer;
+                let estado;
+                if (ehCorreta) {
+                    estado = "correta";
+                } else {
+                    estado = "falsa";
+                }
                 respostas += `
-                <div class="alternativas">
+                <div class="alternativas ${estado}"onclick="selecionarResposta(this)">
                     <img src="${quiz.questions[i].answers[j].image}">
                     <p class="texto-pergunta">${quiz.questions[i].answers[j].text}</p>
                 </div>`; 
             }
 
             container2.innerHTML += `
-            <section class="container-perguntas -${i + 1}">
+            <section class="container-perguntas - ${i + 1}">
                 <div class="titulo-perguntas" style="background-color:${quiz.questions[i].color};">
                     <h2>${quiz.questions[i].title}</h2>
                 </div>
@@ -75,8 +79,52 @@ function exibirQuizz (resposta){
           } 
 }
 
+
+
+
+
+function selecionarResposta (clique) {
+  const campoRespostas = clique.parentNode;
+  const campoPergunta = campoRespostas.parentNode;
+  const todasPerguntas = document.querySelector(".container-perguntas");
+  const todasRespostas = campoRespostas.querySelectorAll(".alternativas");
+
+  for (let i = 0; i < todasRespostas.length; i++) {
+      todasRespostas[i].style.opacity = "0.5";
+  }
+  clique.style.opacity = "1";
+
+  removerClique(todasRespostas);
+  marcarResposta(campoRespostas, clique);
+  scrollarPergunta(campoPergunta, todasPerguntas);
+}
  
- 
+
+
+function marcarResposta(campoRespostas, element) {
+  const respostaCorreta = campoRespostas.querySelector(".correta");
+  const respostasFalsas = campoRespostas.querySelectorAll(".falsa");
+
+  respostaCorreta.querySelector("p").style.color = "#009C22";
+
+  for (let i = 0; i < respostasFalsas.length; i++) {
+      respostasFalsas[i].querySelector("p").style.color = "#FF4B4B";
+  }
+
+  if (conferirAcerto(element)) {
+      acertos++;
+  }
+
+}
+
+function removerClique (arrRespostas) {
+  for (let i = 0; i < arrRespostas.length; i++) {
+      arrRespostas[i].removeAttribute("onclick");
+  }
+}
+
+
+
 
 
 
@@ -88,13 +136,13 @@ function buscarQuizz (id) {
 
 
 
-function entrarQuizz (element) {
+function entrarQuizz (el) {
   
   window.scrollTo(0,0);
   document.querySelector(".corpo").classList.add("esconder");
   document.querySelector(".criar-quiz-container").classList.add("esconder");
   document.querySelector(".segunda-tela").classList.remove("esconder");
-  idQuizz = element.getAttribute("id");
+  idQuizz = el.getAttribute("id");
     buscarQuizz(idQuizz);
   
 }
