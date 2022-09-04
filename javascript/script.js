@@ -2,7 +2,9 @@
 
 const listaQuizzes = document.querySelector("ul");
 
-const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`);
+const promessa = axios.get(
+  `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`
+);
 promessa.then(pegaQuizes);
  
 function pegaQuizes(resposta) {
@@ -12,26 +14,19 @@ function pegaQuizes(resposta) {
                                     <div class="degrade" id="${quiz.id}" onclick="entrarQuizz(this)"></div>
                                     <img src=${quiz.image}>
                                     <span>${quiz.title}</span>
-                                   </li>`
-    }); 
-}; 
-
-
-
-
-        
-
+                                   </li>`;
+  });
+}
 
 
 /* esconder quiz */
-function criarQuizz(){
+function criarQuizz() {
   const elemento = document.querySelector(".tela2");
-	elemento.classList.remove("esconder");
+  elemento.classList.remove("esconder");
 
   const elemento1 = document.querySelector(".corpo");
-	elemento1.classList.add("esconder");
+  elemento1.classList.add("esconder");
 }
-
 
 
 // tela 2
@@ -112,9 +107,22 @@ function entrarQuizz (element) {
 
 // Inicio Tela 3
 let perguntas = 0;
+let nivel = 0;
+let imagem = "";
+const quizCompleto = {
+  title: "",
+  image: "",
+  questions: [],
+  levels: [],
+};
 
-function validURL(str) {
-  var pattern = new RegExp(
+function validarHexa(str) {
+  const pattern = /^#[0-9A-F]{6}$/i;
+  return pattern.test(str);
+}
+
+function validarURL(str) {
+  const pattern = new RegExp(
     "^(https?:\\/\\/)?" +
       "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
       "((\\d{1,3}\\.){3}\\d{1,3}))" +
@@ -126,7 +134,7 @@ function validURL(str) {
   return !!pattern.test(str);
 }
 
-function criarPerguntas() {
+function criarQuiz() {
   const elementoTitulo = document.querySelector(".titulo-quiz");
   const elementoImg = document.querySelector(".img-quiz");
   const elementoQtdPerguntas = document.querySelector(".qtd-perguntas");
@@ -139,14 +147,20 @@ function criarPerguntas() {
     nivel: Number(elementoQtdNiveis.value),
   };
 
-  // validar
-  if (validarForm(novoQuiz)) {
+  if (validarQuiz(novoQuiz)) {
     alert("Preencha os dados corretamente");
   } else {
     perguntas = novoQuiz.perguntas;
+    nivel = novoQuiz.nivel;
+    imagem = novoQuiz.imagem;
+
+    quizCompleto.title = novoQuiz.titulo;
+    quizCompleto.image = novoQuiz.imagem;
 
     const divQuizForm = document.querySelector(".criar-quiz");
-    const divCriarPerguntas = document.querySelector(".esconder-cadastrar-quiz");
+    const divCriarPerguntas = document.querySelector(
+      ".esconder-cadastrar-quiz"
+    );
 
     divQuizForm.classList.add("esconder-cadastrar-quiz");
     divCriarPerguntas.classList.remove("esconder-cadastrar-quiz");
@@ -155,12 +169,12 @@ function criarPerguntas() {
   }
 }
 
-function validarForm(novoQuiz) {
+function validarQuiz(novoQuiz) {
   let formInvalido = false;
 
   if (novoQuiz.titulo.length <= 20 || novoQuiz.titulo.length > 65) {
     formInvalido = true;
-  } else if (!validURL(novoQuiz.imagem)) {
+  } else if (!validarURL(novoQuiz.imagem)) {
     formInvalido = true;
   } else if (novoQuiz.perguntas < 3) {
     formInvalido = true;
@@ -184,8 +198,8 @@ function renderizarPerguntas() {
         <p>Pergunta ${i + 1}</p>
         
         <div class="perguntasQuiz">
-            <input type="text" class="input-form texto-quiz" placeholder="Texto da pergunta">
-            <input type="text" class="input-form cor" placeholder="Cor de fundo da pergunta">
+            <input type="text" class="input-form texto-pergunta" placeholder="Texto da pergunta">
+            <input type="text" class="input-form cor-fundo" placeholder="Cor de fundo da pergunta">
         </div>
      </div>
         
@@ -194,8 +208,8 @@ function renderizarPerguntas() {
          
       
          <div class="respostasQuiz">
-            <input type="text" class="input-form" placeholder="Resposta correta">
-            <input type="text" class="input-form" placeholder="URL da imagem">
+            <input type="text" class="input-form resp-certa" placeholder="Resposta correta">
+            <input type="text" class="input-form url-certa" placeholder="URL da imagem">
         </div>
     </div>
 
@@ -204,18 +218,18 @@ function renderizarPerguntas() {
 
           <div class="respostasQuiz">
              <div class="resposta-incorreta">
-                <input type="text" class="input-form" placeholder="Resposta incorreta 1">
-                <input type="text" class="input-form" placeholder="URL da imagem 1">
+                <input type="text" class="input-form primeira-incorreta" placeholder="Resposta incorreta 1">
+                <input type="text" class="input-form imagem-incorreta" placeholder="URL da imagem 1">
              </div>
 
              <div class="resposta-incorreta">
-                <input type="text" class="input-form" placeholder="Resposta incorreta 2">
-                <input type="text" class="input-form" placeholder="URL da imagem 2">
+                <input type="text" class="input-form segunda-incorreta" placeholder="Resposta incorreta 2">
+                <input type="text" class="input-form img-url" placeholder="URL da imagem 2">
               </div>
 
              <div class="resposta-incorreta">
-                <input type="text" class="input-form" placeholder="Resposta incorreta 3">
-                <input type="text" class="input-form" placeholder="URL da imagem 3">
+                <input type="text" class="input-form terceira-incorreta" placeholder="Resposta incorreta 3">
+                <input type="text" class="input-form image-url" placeholder="URL da imagem 3">
               </div>
            </div>
        
@@ -223,14 +237,234 @@ function renderizarPerguntas() {
   }
 }
 
-function criarNiveis() {
-  const divCriarPerguntas = document.querySelector(".criar-perguntas");
-  const divCriarNivel = document.querySelector(".criar-niveis.esconder");
+function criarPergunta() {
+  const textos = document.querySelectorAll(".texto-pergunta");
+  const cores = document.querySelectorAll(".cor-fundo");
+  const respCertas = document.querySelectorAll(".resp-certa");
+  const urlsRespCertas = document.querySelectorAll(".url-certa");
+  const primeirasRespErr = document.querySelectorAll(".primeira-incorreta");
+  const primeirasImgErr = document.querySelectorAll(".imagem-incorreta");
+  const segundasRespErr = document.querySelectorAll(".segunda-incorreta");
+  const segundasImgErr = document.querySelectorAll(".img-url");
+  const terceirasRespErr = document.querySelectorAll(".terceira-incorreta");
+  const terceirasImgErr = document.querySelectorAll(".image-url");
 
-  divCriarPerguntas.classList.add("esconder");
-  divCriarNivel.classList.remove("esconder");
+  let perguntas = [];
+
+  for (let i = 0; i < textos.length; i++) {
+    const respostas = [
+      {
+        text: respCertas[i].value,
+        image: urlsRespCertas[i].value,
+        isCorrectAnswer: true,
+      },
+      {
+        text: primeirasRespErr[i].value,
+        image: primeirasImgErr[i].value,
+        isCorrectAnswer: false,
+      },
+      {
+        text: segundasRespErr[i].value,
+        image: segundasImgErr[i].value,
+        isCorrectAnswer: false,
+      },
+      {
+        text: terceirasRespErr[i].value,
+        image: terceirasImgErr[i].value,
+        isCorrectAnswer: false,
+      },
+    ];
+
+    const novaPergunta = {
+      title: textos[i].value,
+      color: cores[i].value,
+      answers: respostas.filter((resposta) => resposta.text != ""),
+    };
+
+    perguntas.push(novaPergunta);
+  }
+
+  let podeCadastrar = true;
+
+  perguntas.forEach(function (pergunta) {
+    if (validarPergunta(pergunta)) {
+      podeCadastrar = false;
+    }
+  });
+
+  if (podeCadastrar) {
+    quizCompleto.questions = perguntas;
+
+    const divCriarPerguntas = document.querySelector(".criar-perguntas");
+    const divCriarNivel = document.querySelector(
+      ".criar-niveis.esconder-cadastrar-quiz"
+    );
+
+    divCriarPerguntas.classList.add("esconder-cadastrar-quiz");
+    divCriarNivel.classList.remove("esconder-cadastrar-quiz");
+
+    renderizarNivel();
+  } else {
+    alert("Preencha os dados corretamente");
+  }
 }
 
-function adicionarQuiz() {
+function validarPergunta(novaPergunta) {
+  let formInvalido = false;
+
+  if (novaPergunta.title.length < 20) {
+    formInvalido = true;
+  } else if (!validarHexa(novaPergunta.color)) {
+    formInvalido = true;
+  }
+
+  const respostaCorreta = novaPergunta.answers.filter(function (pergunta) {
+    return pergunta.isCorrectAnswer == true;
+  });
+
+  if (respostaCorreta.length > 0) {
+    if (respostaCorreta[0].text.trim() == "") {
+      formInvalido = true;
+    } else if (!validarURL(respostaCorreta[0].image)) {
+      formInvalido = true;
+    }
+  } else {
+    formInvalido = true;
+  }
+
+  const respostasPreenchidas = novaPergunta.answers.filter(function (resposta) {
+    return resposta.isCorrectAnswer == false && resposta.text != "";
+  });
+
+  if (respostasPreenchidas.length == 0) {
+    formInvalido = true;
+  } else {
+    respostasPreenchidas.forEach(function (respostaIncorreta) {
+      if (!validarURL(respostaIncorreta.image)) {
+        formInvalido = true;
+      }
+    });
+  }
+
+  return formInvalido;
 }
+
+function finalizarQuiz() {
+  const titulosNivel = document.querySelectorAll(".titulo-nivel");
+  const elementoAcertos = document.querySelectorAll(".acerto-minimo");
+  const elementoImgsNivel = document.querySelectorAll(".img-nivel");
+  const elementoInfosNivel = document.querySelectorAll(".info-nivel");
+
+  let niveis = [];
+
+  for (let i = 0; i < titulosNivel.length; i++) {
+    const criacaoNivel = {
+      title: titulosNivel[i].value,
+      image: elementoImgsNivel[i].value,
+      text: elementoInfosNivel[i].value,
+      minValue: Number(elementoAcertos[i].value),
+    };
+
+    niveis.push(criacaoNivel);
+  }
+
+  let podeCadastrar = true;
+
+  niveis.forEach(function (nivel) {
+    if (validarNivel(nivel)) {
+      podeCadastrar = false;
+    }
+  });
+
+  const acertoZero = niveis.filter(function (nivel) {
+    return nivel.minValue == 0;
+  });
+  if (acertoZero.length == 0) {
+    podeCadastrar = false;
+  }
+
+  if (podeCadastrar) {
+    quizCompleto.levels = niveis;
+
+    axios
+      .post(
+        "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",
+        quizCompleto
+      )
+      .then(function (response) {
+        salvarLocalStorage(response.data.id);
+
+        const divCriarNiveis = document.querySelector(".criar-niveis");
+        const divFinalizarQuiz = document.querySelector(
+          ".finalizar-quiz.esconder"
+        );
+
+        divCriarNiveis.classList.add("esconder-cadastrar-quiz");
+        divFinalizarQuiz.classList.remove("esconder");
+
+        quizPronto();
+      });
+  } else {
+    alert("Preencha os dados corretamente");
+  }
+}
+
+function salvarLocalStorage(quizId) {
+  const idsCadastrados = localStorage.getItem("ids");
+
+  if (idsCadastrados != null) {
+    const idsArray = JSON.parse(idsCadastrados);
+    idsArray.push(quizId);
+    localStorage.setItem("ids", JSON.stringify(idsArray));
+  } else {
+    localStorage.setItem("ids", JSON.stringify([quizId]));
+  }
+}
+
+function renderizarNivel() {
+  const div = document.querySelector(".questionario-nivel");
+
+  div.innerHTML = "";
+
+  for (let i = 0; i < nivel; i++) {
+    div.innerHTML =
+      div.innerHTML +
+      `
+    <div class="questionario-nivel">
+    <div class="perguntas-respostas">
+        <p>Nível ${i + 1}</p>
+
+        <div class="perguntasQuiz">
+            <input type="text" class="input-form titulo-nivel" placeholder="Título do nível">
+            <input type="text" class="input-form acerto-minimo" placeholder="% de acerto mínima">
+            <input type="text" class="input-form img-nivel" placeholder="URL da imagem do nível">
+            <input type="text" class="input-form info-nivel" placeholder=" Descrição do nível">
+        </div>
+    </div>
+
+    `;
+  }
+}
+
+function validarNivel(criacaoNivel) {
+  let formInvalido = false;
+
+  if (criacaoNivel.title.trim().length < 10) {
+    formInvalido = true;
+  } else if (criacaoNivel.minValue < 0 || criacaoNivel.minValue > 100) {
+    formInvalido = true;
+  } else if (!validarURL(criacaoNivel.image)) {
+    formInvalido = true;
+  } else if (criacaoNivel.text.length < 30) {
+    formInvalido = true;
+  }
+
+  return formInvalido;
+}
+
+function quizPronto() {
+  const divQuizPronto = document.querySelector(".finalizar-quiz .quiz-pronto");
+  divQuizPronto.innerHTML = `<img src="${imagem}"></img>`;
+}
+
 // Fim Tela 3

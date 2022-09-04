@@ -1,84 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuzzQuizz</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BuzzQuizz</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/estilos.css">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
-</head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    </head>
 
-<body>
-    <!-- Tela 1 -->
-    <header>
-        <div class="caixa-vermelha">
-            BuzzQuizz
-        </div>
-    </header>
-    <div class="fundo">
-        <div class="corpo">
-            <div class="tela-quizzes-pra-criar">
-                Você não criou nenhum <br>
-                quizz ainda :(
-                <button onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
+    <body>
+        <!-- Tela 1 -->
+        <header>
+            <div class="caixa-vermelha">
+                BuzzQuizz
             </div>
-
-            <div class="tela-quizzes-api">
-                <div class="quizzes">
-                    <p>Todos os Quizzes</p>
-                    <ul>
-                    </ul>
+        </header>
+        <div class="fundo">
+            <div class="corpo">
+                <div class="tela-quizzes-pra-criar">
+                    Você não criou nenhum <br>
+                    quizz ainda :(
+                    <button onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
                 </div>
+
+                <div class="tela-quizzes-api">
+                    <div class="quizzes">
+                        <p>Todos os Quizzes</p>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+
+
             </div>
 
-
         </div>
-        
-    </div>
         <!-- Fim Tela 1 -->
         <!--Tela 2-->
         <div class="segunda-tela esconder">
             <div class="banner-fundo">
-                
-               
+
+
             </div>
             <div class="conteudoPerguntasTela2">
-                                                    
-                    
+
+
+            </div>
+
+            <div class="quiz-finalizado esconder">
+
+                <div class="titulo-quiz-finalizado">
+
+                    <h2>aaaaaaaaaaaaaaa</h2>
                 </div>
-                
-            
-
-                
-                <div class="quiz-finalizado esconder">
-
-                    <div class="titulo-quiz-finalizado">
-
-                        <h2>aaaaaaaaaaaaaaa</h2>
-                    </div>
-                    <div class="resultado">
-                        <img src="/imagens/image 10.png">
-                        <p>eeessssssssssssssssssssssssssssseeeeeee</p>
-                    </div>
-
+                <div class="resultado">
+                    <img src="/imagens/image 10.png">
+                    <p>eeessssssssssssssssssssssssssssseeeeeee</p>
                 </div>
 
-                <div class="botoes-navegar esconder">
+            </div>
 
-                    <button class="botao-reiniciar">Reiniciar Quiz</button>
+            <div class="botoes-navegar esconder">
 
-                    <button class="voltar-home"> Voltar para home</button>
+                <button class="botao-reiniciar">Reiniciar Quiz</button>
+
+                <button class="voltar-home"> Voltar para home</button>
 
 
-                </div>
-            
-            
+            </div>
+
+
         </div>
 
 
@@ -107,79 +104,85 @@
                         </div>
 
                         <div class="inicioQuiz">
-                            <input type="text" class=" input-form qtd-niveis" placeholder="Quantidade de níveis do quiz">
+                            <input type="text" class=" input-form qtd-niveis"
+                                placeholder="Quantidade de níveis do quiz">
                         </div>
 
                         <div class="botaoCriarPerguntas">
-                            <button onclick="criarPerguntas()">Prosseguir para criar perguntas</button>
+                            <button onclick="criarQuiz()">Prosseguir para criar perguntas</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="criar-perguntas esconder-cadastrar-quiz">
-                <div class="pagina-titulo">
-                    Crie suas perguntas
-                </div>
-                <div class="questionario">
+                <div class="criar-perguntas esconder-cadastrar-quiz ">
+                    <div class="pagina-titulo">
+                        Crie suas perguntas
+                    </div>
+                    <div class="questionario">
 
-                    <div class="perguntas-respostas">
-                        <div class="perguntas-icons">
-                            <p>Pergunta 2</p>
-                            <img src="imagens/Vector copy.jpg" onclick="">
-                        </div>
-                        <div class="perguntas-icons">
-                            <p>Pergunta 3</p>
-                            <img src="imagens/Vector copy.jpg" onclick="">
+                        <div class="perguntas-respostas">
+                            <div class="perguntas-icons">
+                                <p>Pergunta 2</p>
+                                <img src="imagens/Vector copy.jpg" onclick="">
+                            </div>
+                            <div class="perguntas-icons">
+                                <p>Pergunta 3</p>
+                                <img src="imagens/Vector copy.jpg" onclick="">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="botaoCriarPerguntas">
-                    <button onclick="criarNiveis()">Prosseguir para criar níveis</button>
-                </div>
-            </div>
-
-            <div class="criar-niveis esconder-cadastrar-quiz">
-                <div class="pagina-titulo">
-                    Agora, decida os níveis
+                    <div class="botaoCriarPerguntas">
+                        <button onclick="criarPergunta()">Prosseguir para criar níveis</button>
+                    </div>
                 </div>
 
-                <div class="questionario">
-                    <div class="perguntas-respostas">
-                        <p>Nível 1</p>
-
-                        <div class="perguntasQuiz">
-                            <input type="text" class="input-form" placeholder="Título do nível">
-                            <input type="text" class="input-form" placeholder="% de acerto mínima">
-                            <input type="text" class="input-form" placeholder="URL da imagem do nível">
-                            <input type="text" class="input-form" placeholder=" Descrição do nível">
-                        </div>
+                <div class="criar-niveis esconder-cadastrar-quiz">
+                    <div class="pagina-titulo">
+                        Agora, decida os níveis
                     </div>
 
-                    <div class="perguntas-respostas">
-                        <div class="perguntas-icons">
-                            <p>Nível 2</p>
-                            <img src="imagens/Vector copy.jpg" onclick="">
+                    <div class="questionario-nivel">
+
+
+                        <div class="perguntas-respostas">
+                            <div class="perguntas-icons">
+                                <p>Nível 2</p>
+                                <img src="imagens/Vector copy.jpg" onclick="">
+                            </div>
+                            <div class="perguntas-icons">
+                                <p>Nível 3</p>
+                                <img src="imagens/Vector copy.jpg" onclick="">
+                            </div>
                         </div>
-                        <div class="perguntas-icons">
-                            <p>Nível 3</p>
-                            <img src="imagens/Vector copy.jpg" onclick="">
-                        </div>
+
                     </div>
 
+                    <div class="botaoCriarPerguntas">
+                        <button onclick="finalizarQuiz()">Finalizar Quiz</button>
+                    </div>
                 </div>
 
-                <div class="botaoCriarPerguntas">
-                    <button onclick="criarNiveis()">Finalizar Quiz</button>
-                </div>
-            </div>
+                <div class="finalizar-quiz esconder">
+                    <div class="pagina-titulo">
+                        Seu quizz está pronto!
+                    </div>
+                    <div class="quiz-pronto">
+                    </div>
+                    <div class="botaoFinalizarQuiz">
+                        <button onclick="acessarQuiz()">Acessar Quizz</button>
+                    </div>
 
-        </div> <!-- container -->
-        <!-- Fim Tela 3 -->
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-        <script src="javascript/script.js"></script>
-</body>
+                    <div class="botaoVoltarHome">
+                        <button onclick="voltarHome()">Voltar para home</button>
+                    </div>
+                </div>
+
+            </div> <!-- container -->
+            <!-- Fim Tela 3 -->
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+            <script src="javascript/script.js"></script>
+    </body>
 
 </html>

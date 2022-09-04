@@ -381,6 +381,10 @@ color: #FFFFFF;
   .esconder-cadastrar-quiz {
     display: none;
   }
+
+  .esconder-finalizar-quiz{
+    display: none;
+  }
   .pagina-titulo {
     font-size: 23px;
     font-weight: bold;
@@ -426,7 +430,7 @@ color: #FFFFFF;
     border: none;
   }
   
-  .questionario{
+  .questionario, .questionario-nivel{
       background-color: #ffffff;
       width: 600px;
       margin: 50px auto;
@@ -456,5 +460,41 @@ color: #FFFFFF;
   .perguntas-icons img{
     width:26px;
     height:23px;
+  }
+
+  .botaoFinalizarQuiz button{
+    width: 220px;
+    height: 44px;
+    border-radius: 15px;
+    background-color: #ec362d;
+    font-size: 21px;
+    color: #fff5f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:70px auto 0 auto;
+    border: none;
+  }
+
+  .botaoVoltarHome button{
+    background-color: #FAFAFA;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    color:#818181;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:70px auto 0 auto;
+    border: none;
+  }
+
+  .quiz-pronto img{
+   width:500px;
+   height:266px;
+   border-radius:5px;
+   margin-left:380px ;
+   margin-top:20px
   }
   /* Fim Tela 3 */
