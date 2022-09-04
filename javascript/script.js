@@ -216,7 +216,7 @@ function exibirResultado (){
         </div>
         <section class="botoes-navegar">
             <button class="botao-reiniciar"">Reiniciar Quizz</button>
-            <button class="voltar-home" onclick="voltarTelaInicial()">Voltar para home</button>
+            <button class="voltar-home"">Voltar para home</button>
         </section>`;
 
         setTimeout(function (){
