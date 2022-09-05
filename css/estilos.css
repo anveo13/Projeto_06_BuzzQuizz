@@ -523,23 +523,60 @@ color: #FFFFFF;
         align-items: center;
     }
     
-    .segunda-tela{
-        align-items: center;
+    /* tela 2*/
+    
+
+    .banner-fundo h2 {
+        font-size: 23px;
+        line-height: 27px;
+        text-align: center;
+        margin: 0 10px;
+        word-break: break-word;
     }
-    .banner-fundo img {
+
+    .banner-fundo, .banner-fundo img{
+        height: 142px;
+    }
+   .container-perguntas, .quiz-finalizado{ 
+
+        width: 96%;
+        height: auto;
+        padding: 18px;
+    }
+
+    .conteudoPerguntasTela2{   
         width: 100%;
+        margin: 0;
     }
-    .conteudoPerguntasTela2{
-        align-items: center;
+    .alternativas {
+
+        width: 47%;
+        height: auto;
+        margin-bottom: 0;
+
+    }
+    
+    .alternativas img {
         width: 100%;
-        display: flex;
-        /* justify-content: center; */
-        flex-direction: column;
-        align-content: center;
+        height: auto;
+        aspect-ratio: 1;
     }
-    .container-perguntas{
-        width: 80%;
+    .texto-pergunta{
+        
+       width: 100%;
+       margin: 5px 0 10px 0;
+       font-size: 19px;
+       word-wrap: break-word;
+    
     }
+    .titulo-perguntas {
+        height: 89px;
+    }
+    .titulo-perguntas h2, .quiz-finalizado h2 {
+        font-size: 19px;
+    }
+   
+    
     .quiz-form, .input-form, .questionario, .questionario-nivel{
         width: 95%;
     }
