@@ -207,7 +207,7 @@ function exibirResultado (){
         container2.innerHTML += `
         <div class="quiz-finalizado">
             <div class="titulo-quiz-finalizado">
-                <h2>${resultado.porcentagem}% de acerto: ${nivel.title}</h2>
+                <h2>${resultado.porcentagem }% de acerto: ${nivel.title}</h2>
             </div>
             <div class="resultado">
                 <img src="${nivel.image}">
@@ -215,7 +215,7 @@ function exibirResultado (){
             </div>
         </div>
         <section class="botoes-navegar">
-            <button class="botao-reiniciar"">Reiniciar Quizz</button>
+            <button class="botao-reiniciar" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
             <button class="voltar-home" onclick="voltarTelaInicial()">Voltar para home</button>
         </section>`;
 
@@ -232,6 +232,16 @@ function voltarTelaInicial () {
   window.scrollTo({top: 0});
   pegaQuizes();
 }
+
+function reiniciarQuizz (){
+
+    acertos = 0;
+    cliques = 0;
+    window.scrollTo({top: 0, behavior: "smooth"});
+    buscarQuizz(idQuizz);
+    
+}
+
 
   
 
