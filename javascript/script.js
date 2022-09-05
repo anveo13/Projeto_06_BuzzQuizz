@@ -151,7 +151,7 @@ function scrolarPagina (campoPergunta, todasPerguntas) {
 
       if (campoPergunta === todasPerguntas[i]) {
           setTimeout(function () {
-              todasPerguntas[i+1].scrollIntoView({block: "center", behavior: "smooth"});
+              todasPerguntas[i+1].scrollIntoView({block: "start", behavior: "smooth"});
           }, 1000);
       }
   }
@@ -216,13 +216,21 @@ function exibirResultado (){
         </div>
         <section class="botoes-navegar">
             <button class="botao-reiniciar"">Reiniciar Quizz</button>
-            <button class="voltar-home"">Voltar para home</button>
+            <button class="voltar-home" onclick="voltarTelaInicial()">Voltar para home</button>
         </section>`;
 
         setTimeout(function (){
           document.querySelector(".quiz-finalizado").scrollIntoView({block: "center", behavior: "smooth"});
       }, 2000);
        
+}
+
+function voltarTelaInicial () {
+  
+  document.querySelector(".corpo").classList.remove("esconder");
+  document.querySelector(".segunda-tela").classList.add("esconder");
+  window.scrollTo({top: 0});
+  pegaQuizes();
 }
 
   
