@@ -83,18 +83,18 @@ function exibirQuizz (resposta){
                     estado = "falsa";
                 }
                 respostas += `
-                <div class="alternativas ${estado}"onclick="selecionarResposta(this)">
+                <div class="alternativas ${estado}" data-identifier="answer"onclick="selecionarResposta(this)">
                     <img src="${quiz.questions[i].answers[j].image}">
                     <p class="texto-pergunta">${quiz.questions[i].answers[j].text}</p>
                 </div>`; 
             }
 
             container2.innerHTML += `
-            <section class="container-perguntas - ${i + 1}">
-                <div class="titulo-perguntas" style="background-color:${quiz.questions[i].color};">
+            <section class="container-perguntas - ${i + 1}" data-identifier="question">
+                <div class="titulo-perguntas" data-identifier="question" style="background-color:${quiz.questions[i].color};">
                     <h2>${quiz.questions[i].title}</h2>
                 </div>
-                <div class="alternativa-perguntas">
+                <div class="alternativa-perguntas" data-identifier="answer">
                     ${respostas}
                 </div>
             </section>`
@@ -227,7 +227,7 @@ function exibirResultado (){
    const nivel = quiz.levels[resultado.nivelIndex];
    const container2 = document.querySelector(".conteudoPerguntasTela2");
         container2.innerHTML += `
-        <div class="quiz-finalizado">
+        <div class="quiz-finalizado" data-identifier="quizz-result">
             <div class="titulo-quiz-finalizado">
                 <h2>${resultado.porcentagem }% de acerto: ${nivel.title}</h2>
             </div>
