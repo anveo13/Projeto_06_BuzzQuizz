@@ -394,7 +394,7 @@ color: #FFFFFF;
 
 /* Tela 3 */
   .esconder{
-    display: none;
+    display: none !important;
   }
   .esconder-cadastrar-quiz {
     display: none;
@@ -452,8 +452,21 @@ color: #FFFFFF;
   .questionario, .questionario-nivel{
       background-color: #ffffff;
       width: 600px;
+      height: 825px;
       margin: 50px auto;
       padding: 6px;
+  }
+
+  .formulario {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 6px;
+    margin-top: 20px;
+  }
+
+  .formulario-box {
+    width: 600px;
+    margin: 50px auto;
   }
   
   .perguntas-respostas p {
@@ -471,14 +484,15 @@ color: #FFFFFF;
    display:flex;
    justify-content: space-between;
    background-color: #ffffff;
-   width:601px;
-   height:74px;
-   margin-top: 10px;
+   width:100%;
+   margin-top: 20px;
+   padding: 0 0 20px 20px;
   }
   
   .perguntas-icons img{
     width:26px;
     height:23px;
+    margin-right: 10px;
   }
 
   .botaoFinalizarQuiz button{

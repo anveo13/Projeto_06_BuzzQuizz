@@ -38,7 +38,7 @@ function pegaQuizes(resposta) {
                                     <img src=${quiz.image}>
                                     <span>${quiz.title}</span>
                                    </li>`;
-  })
+  });
 }
 
 /* esconder quiz */
@@ -50,71 +50,75 @@ function criarQuizz() {
   elemento1.classList.add("esconder");
 }
 
-
 // tela 2
-function comparador () { 
-	return Math.random() - 0.5; 
+function comparador() {
+  return Math.random() - 0.5;
 }
 
-  
+function exibirQuizz(resposta) {
+  quiz = resposta.data;
+  const bannerQuizz = document.querySelector(".banner-fundo");
 
-function exibirQuizz (resposta){
-   quiz = resposta.data;
-    const bannerQuizz = document.querySelector(".banner-fundo");
-               
-               bannerQuizz.innerHTML +=  `
+  bannerQuizz.innerHTML += `
                <div class="bannerImagem"></div>
                <img src=${quiz.image}>
                <h2>${quiz.title}</h2>`;
 
+  const container2 = document.querySelector(".conteudoPerguntasTela2");
+  container2.innerHTML = "";
+  for (let i = 0; i < quiz.questions.length; i++) {
+    let respostas = "";
 
-                const container2 = document.querySelector(".conteudoPerguntasTela2");
-                      container2.innerHTML = "";
-               for (let i = 0; i < quiz.questions.length; i++) {
-                let respostas = ""; 
-                  quiz.questions[i].answers.sort(comparador);
+    const container2 = document.querySelector(".conteudoPerguntasTela2");
+    container2.innerHTML = "";
+    for (let i = 0; i < quiz.questions.length; i++) {
+      let respostas = "";
+      quiz.questions[i].answers.sort(comparador);
 
-               for (let j = 0; j < quiz.questions[i].answers.length; j++) {
-                const ehCorreta = quiz.questions[i].answers[j].isCorrectAnswer;
-                let estado;
-                if (ehCorreta) {
-                    estado = "correta";
-                } else {
-                    estado = "falsa";
-                }
-                respostas += `
+      for (let j = 0; j < quiz.questions[i].answers.length; j++) {
+        const ehCorreta = quiz.questions[i].answers[j].isCorrectAnswer;
+        let estado;
+        if (ehCorreta) {
+          estado = "correta";
+        } else {
+          estado = "falsa";
+        }
+        respostas += `
                 <div class="alternativas ${estado}" data-identifier="answer"onclick="selecionarResposta(this)">
                     <img src="${quiz.questions[i].answers[j].image}">
                     <p class="texto-pergunta">${quiz.questions[i].answers[j].text}</p>
-                </div>`; 
-            }
+                </div>`;
+      }
 
-            container2.innerHTML += `
-            <section class="container-perguntas - ${i + 1}" data-identifier="question">
-                <div class="titulo-perguntas" data-identifier="question" style="background-color:${quiz.questions[i].color};">
+      container2.innerHTML += `
+            <section class="container-perguntas - ${
+              i + 1
+            }" data-identifier="question">
+                <div class="titulo-perguntas" data-identifier="question" style="background-color:${
+                  quiz.questions[i].color
+                };">
                     <h2>${quiz.questions[i].title}</h2>
                 </div>
                 <div class="alternativa-perguntas" data-identifier="answer">
                     ${respostas}
                 </div>
-            </section>`
-          } 
+            </section>`;
+    }
+  }
 }
-
-
 
 let cliques = 0;
 let acertos = 0;
 let idQuizz;
 
-function selecionarResposta (clique) {
+function selecionarResposta(clique) {
   const campoRespostas = clique.parentNode;
   const campoPergunta = campoRespostas.parentNode;
   const todasPerguntas = document.querySelectorAll(".container-perguntas");
   const todasRespostas = campoRespostas.querySelectorAll(".alternativas");
 
   for (let i = 0; i < todasRespostas.length; i++) {
-      todasRespostas[i].style.opacity = "0.5";
+    todasRespostas[i].style.opacity = "0.5";
   }
   clique.style.opacity = "1";
 
@@ -122,8 +126,6 @@ function selecionarResposta (clique) {
   marcarResposta(campoRespostas, clique);
   scrolarPagina(campoPergunta, todasPerguntas);
 }
- 
-
 
 function marcarResposta(campoRespostas, element) {
   const respostaCorreta = campoRespostas.querySelector(".correta");
@@ -132,104 +134,90 @@ function marcarResposta(campoRespostas, element) {
   respostaCorreta.querySelector("p").style.color = "#009C22";
 
   for (let i = 0; i < respostasFalsas.length; i++) {
-      respostasFalsas[i].querySelector("p").style.color = "#FF4B4B";
+    respostasFalsas[i].querySelector("p").style.color = "#FF4B4B";
   }
 
   if (conferirAcerto(element)) {
     acertos++;
+  }
+
+  cliques++;
 }
 
-cliques++;
-}
-
-
-
-function removerClique (clique) {
+function removerClique(clique) {
   for (let i = 0; i < clique.length; i++) {
-      clique[i].removeAttribute("onclick");
+    clique[i].removeAttribute("onclick");
   }
 }
 
-function conferirAcerto (resposta) {
+function conferirAcerto(resposta) {
   if (resposta.classList.contains("correta")) {
-      return true;
+    return true;
   }
   return false;
 }
 
-
-
-
-function scrolarPagina (campoPergunta, todasPerguntas) {
+function scrolarPagina(campoPergunta, todasPerguntas) {
   if (cliques === todasPerguntas.length) {
-      exibirResultado();
-      return;
+    exibirResultado();
+    return;
   }
 
   for (let i = 0; i < todasPerguntas.length; i++) {
-      if (campoPergunta === todasPerguntas[todasPerguntas.length - 1]) {
-          return;
-      }
+    if (campoPergunta === todasPerguntas[todasPerguntas.length - 1]) {
+      return;
+    }
 
-      if (campoPergunta === todasPerguntas[i]) {
-          setTimeout(function () {
-              todasPerguntas[i+1].scrollIntoView({block: "start", behavior: "smooth"});
-          }, 1000);
-      }
+    if (campoPergunta === todasPerguntas[i]) {
+      setTimeout(function () {
+        todasPerguntas[i + 1].scrollIntoView({
+          block: "start",
+          behavior: "smooth",
+        });
+      }, 1000);
+    }
   }
 }
 
-     
-  
+function calcularNivel() {
+  const perguntas = quiz.questions.length;
+  const porcentagem = Math.round((acertos / perguntas) * 100);
+  let nivel;
 
-  function calcularNivel () {
-
-    const perguntas = quiz.questions.length;
-    const porcentagem = Math.round((acertos/perguntas)*100);
-    let nivel;
-
-    for (let i = 0; i < quiz.levels.length; i++) {
-        if (porcentagem >= quiz.levels[i].minValue) {
-            nivel = i;
-        }
+  for (let i = 0; i < quiz.levels.length; i++) {
+    if (porcentagem >= quiz.levels[i].minValue) {
+      nivel = i;
     }
-    
-    const resultadoObj = {porcentagem: porcentagem, nivelIndex: nivel};
-    return resultadoObj;
+  }
+
+  const resultadoObj = { porcentagem: porcentagem, nivelIndex: nivel };
+  return resultadoObj;
 }
 
-
-
-
-function buscarQuizz (id) {
-  const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/" + id);
-        promise.then(exibirQuizz);
+function buscarQuizz(id) {
+  const promise = axios.get(
+    "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/" + id
+  );
+  promise.then(exibirQuizz);
 }
-  
 
-
-
-function entrarQuizz (el) {
-  
-  window.scrollTo(0,0);
+function entrarQuizz(el) {
+  window.scrollTo(0, 0);
   document.querySelector(".corpo").classList.add("esconder");
   document.querySelector(".criar-quiz-container").classList.add("esconder");
   document.querySelector(".segunda-tela").classList.remove("esconder");
   idQuizz = el.getAttribute("id");
-    buscarQuizz(idQuizz);
-  
+  buscarQuizz(idQuizz);
 }
 
-
-function exibirResultado (){
-
-   const resultado = calcularNivel();
-   const nivel = quiz.levels[resultado.nivelIndex];
-   const container2 = document.querySelector(".conteudoPerguntasTela2");
-        container2.innerHTML += `
+function exibirResultado() {
+  const resultado = calcularNivel();
+  const nivel = quiz.levels[resultado.nivelIndex];
+  const container2 = document.querySelector(".conteudoPerguntasTela2");
+  container2.innerHTML += `
         <div class="quiz-finalizado" data-identifier="quizz-result">
             <div class="titulo-quiz-finalizado">
-                <h2>${resultado.porcentagem }% de acerto: ${nivel.title}</h2>
+                <h2>${resultado.porcentagem}% de acerto: ${nivel.title}</h2>
             </div>
             <div class="resultado">
                 <img src="${nivel.image}">
@@ -241,37 +229,28 @@ function exibirResultado (){
             <button class="voltar-home" onclick="voltarTelaInicial()">Voltar para home</button>
         </section>`;
 
-        setTimeout(function (){
-          document.querySelector(".quiz-finalizado").scrollIntoView({block: "center", behavior: "smooth"});
-      }, 2000);
-       
+  setTimeout(function () {
+    document
+      .querySelector(".quiz-finalizado")
+      .scrollIntoView({ block: "center", behavior: "smooth" });
+  }, 2000);
 }
 
-function voltarTelaInicial () {
-  
+function voltarTelaInicial() {
   document.querySelector(".corpo").classList.remove("esconder");
   document.querySelector(".segunda-tela").classList.add("esconder");
-  window.scrollTo({top: 0});
+  window.scrollTo({ top: 0 });
   pegaQuizes();
 }
 
-function reiniciarQuizz (){
-
-    acertos = 0;
-    cliques = 0;
-    window.scrollTo({top: 0, behavior: "smooth"});
-    buscarQuizz(idQuizz);
-    
+function reiniciarQuizz() {
+  acertos = 0;
+  cliques = 0;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  buscarQuizz(idQuizz);
 }
 
-
-  
-
-
-  
 // fim tela 2
-
-
 
 // Inicio Tela 3
 let perguntas = 0;
@@ -354,32 +333,42 @@ function validarQuiz(novoQuiz) {
 }
 
 function renderizarPerguntas() {
-  const div = document.querySelector(".questionario");
-
-  div.innerHTML = "";
+  const div = document.querySelector(".formulario-box");
 
   for (let i = 0; i < perguntas; i++) {
+    const numeroPergunta = i + 1;
+    let classForm = `formulario form-${numeroPergunta}`;
+
+    if (i > 0) {
+      classForm = classForm + " esconder";
+    } else {
+      classForm = classForm + " open";
+    }
+
     div.innerHTML =
       div.innerHTML +
       `
-      <div class="perguntas-respostas">
-        <p>Pergunta ${i + 1}</p>
+      <div class="${classForm}">
+      <div class="caixa-perguntas">
+        <div class="perguntas-respostas">
+          <p>Pergunta ${numeroPergunta}</p>
         
-        <div class="perguntasQuiz">
+         <div class="perguntasQuiz">
             <input type="text" class="input-form texto-pergunta" placeholder="Texto da pergunta">
             <input type="text" class="input-form cor-fundo" placeholder="Cor de fundo da pergunta">
-        </div>
-     </div>
+         </div>
+       </div>
         
-    <div class="perguntas-respostas">
-        <p>Resposta correta</p>
+       <div class="perguntas-respostas">
+         <p>Resposta correta</p>
          
       
          <div class="respostasQuiz">
             <input type="text" class="input-form resp-certa" placeholder="Resposta correta">
             <input type="text" class="input-form url-certa" placeholder="URL da imagem">
-        </div>
-    </div>
+         </div>
+       </div>
+
         <div class="perguntas-respostas">
           <p>Resposta incorreta</p>
           <div class="respostasQuiz">
@@ -396,12 +385,56 @@ function renderizarPerguntas() {
                 <input type="text" class="input-form image-url" placeholder="URL da imagem 3">
               </div>
            </div>
-       
-        `;
+       </div>
+       </div>
+       `;
+
+    let classPerguntaFechada = `perguntas-icons form-${numeroPergunta}`;
+
+    if (i == 0) {
+      classPerguntaFechada = classPerguntaFechada + " esconder";
+    }
+
+    div.innerHTML =
+      div.innerHTML +
+      ` <div onclick="abrirPergunta('${numeroPergunta}')" class="${classPerguntaFechada}">
+                       <p>Pergunta ${numeroPergunta}</p>
+                       <img src="imagens/Vector.jpg">
+                       </div>
+                     `;
   }
+
+  div.innerHTML += `
+  <div class="botaoCriarPerguntas">
+    <button onclick="criarPergunta()">Prosseguir para criar níveis</button>
+  </div>
+  `;
 }
 
+function abrirPergunta(numeroPergunta) {
+  const formAberto = document.querySelector(".open");
+  const classForm = [...formAberto.classList].filter((classe) =>
+    classe.includes("form-")
+  )[0];
 
+  formAberto.classList.add("esconder");
+  formAberto.classList.remove("open");
+
+  document
+    .querySelector(`.perguntas-icons.${classForm}`)
+    .classList.remove("esconder");
+
+  const fechado = document.querySelector(
+    `.perguntas-icons.form-${numeroPergunta}`
+  );
+  fechado.classList.add("esconder");
+
+  const paraAbrir = document.querySelector(
+    `.formulario.form-${numeroPergunta}`
+  );
+  paraAbrir.classList.remove("esconder");
+  paraAbrir.classList.add("open");
+}
 
 function criarPergunta() {
   const textos = document.querySelectorAll(".texto-pergunta");
@@ -597,7 +630,7 @@ function renderizarNivel() {
       div.innerHTML +
       `
     <div class="questionario-nivel">
-    <div class="perguntas-respostas">
+    <div class="perguntas-respostas data-identifier=level">
         <p>Nível ${i + 1}</p>
 
         <div class="perguntasQuiz">
@@ -633,14 +666,13 @@ function quizPronto() {
   divQuizPronto.innerHTML = `<img src="${imagem}"></img>`;
 }
 
-function voltarHome(){
-  document.querySelector(".finalizar-quiz").classList.add("esconder")
+function voltarHome() {
+  document.querySelector(".finalizar-quiz").classList.add("esconder");
   document.querySelector(".corpo").classList.remove("esconder");
   document.querySelector(".meus-quizzes").classList.remove("esconder");
   document.querySelector(".segunda-tela").classList.add("esconder");
   document.querySelector(".tela-quizzes-pra-criar").classList.add("esconder");
-   window.scrollTo(0,0);
-   pegaQuizes();
-
- }
+  window.scrollTo(0, 0);
+  pegaQuizes();
+}
 // Fim Tela 3
