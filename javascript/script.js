@@ -5,18 +5,41 @@ const promessa = axios.get(
   `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`
 );
 promessa.then(pegaQuizes);
- 
+
 function pegaQuizes(resposta) {
-    arrayQuizes = resposta.data;
-    arrayQuizes.forEach(quiz => {
-        listaQuizzes.innerHTML += `<li>
+  const listaQuizzes = document.querySelector(".alto");
+  const quizesCriado = document.querySelector(".quizz-criado");
+
+  const quizes = localStorage.getItem("ids");
+  const meusIds = JSON.parse(quizes);
+
+  const arrayQuizes = resposta.data;
+
+  console.log("arrayQuizes: " + arrayQuizes);
+  console.log("meusIds: " + meusIds);
+
+  const meusQuizes = arrayQuizes.filter(function (quiz) {
+    return meusIds.includes(quiz.id);
+  });
+
+  console.log(meusQuizes);
+
+  meusQuizes.forEach((quiz) => {
+    quizesCriado.innerHTML += `<li>
+                                <div class="degrade" id="${quiz.id}" onclick="entrarQuizz(this)"></div>
+                                <img src=${quiz.image}> 
+                                <span>${quiz.title}</span>
+                             </li>`;
+  });
+
+  arrayQuizes.forEach((quiz) => {
+    listaQuizzes.innerHTML += `<li>
                                     <div class="degrade" id="${quiz.id}" onclick="entrarQuizz(this)"></div>
                                     <img src=${quiz.image}>
                                     <span>${quiz.title}</span>
                                    </li>`;
-  });
+  })
 }
-
 
 /* esconder quiz */
 function criarQuizz() {
@@ -357,21 +380,17 @@ function renderizarPerguntas() {
             <input type="text" class="input-form url-certa" placeholder="URL da imagem">
         </div>
     </div>
-
         <div class="perguntas-respostas">
           <p>Resposta incorreta</p>
-
           <div class="respostasQuiz">
              <div class="resposta-incorreta">
                 <input type="text" class="input-form primeira-incorreta" placeholder="Resposta incorreta 1">
                 <input type="text" class="input-form imagem-incorreta" placeholder="URL da imagem 1">
              </div>
-
              <div class="resposta-incorreta">
                 <input type="text" class="input-form segunda-incorreta" placeholder="Resposta incorreta 2">
                 <input type="text" class="input-form img-url" placeholder="URL da imagem 2">
               </div>
-
              <div class="resposta-incorreta">
                 <input type="text" class="input-form terceira-incorreta" placeholder="Resposta incorreta 3">
                 <input type="text" class="input-form image-url" placeholder="URL da imagem 3">
@@ -381,6 +400,8 @@ function renderizarPerguntas() {
         `;
   }
 }
+
+
 
 function criarPergunta() {
   const textos = document.querySelectorAll(".texto-pergunta");
@@ -612,4 +633,14 @@ function quizPronto() {
   divQuizPronto.innerHTML = `<img src="${imagem}"></img>`;
 }
 
+function voltarHome(){
+  document.querySelector(".finalizar-quiz").classList.add("esconder")
+  document.querySelector(".corpo").classList.remove("esconder");
+  document.querySelector(".meus-quizzes").classList.remove("esconder");
+  document.querySelector(".segunda-tela").classList.add("esconder");
+  document.querySelector(".tela-quizzes-pra-criar").classList.add("esconder");
+   window.scrollTo(0,0);
+   pegaQuizes();
+
+ }
 // Fim Tela 3

@@ -23,25 +23,25 @@
         </header>
         <div class="fundo">
             <div class="corpo">
-                <div class="tela-quizzes-pra-criar">
+                <div class="tela-quizzes-pra-criar ">
                     Você não criou nenhum <br>
                     quizz ainda :(
-                    <button onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
+                    <button onclick="criarQuizz()" class="criar-quizz" data-identifier="create-quizz">Criar Quizz</button>
                 </div>
 
-                <div class="meus-quizzes">
-                    <div class="titulo-botao esconder">
+                <div class="meus-quizzes esconder">
+                    <div class="titulo-botao ">
                         <p>Seus Quizzes</p>
-                        <ion-icon name="add-circle-sharp" style="font-size: 34px; color: red;"onclick="criarQuizz()"></ion-icon>
+                        <ion-icon name="add-circle-sharp" class=".botao-vermelho" onclick="criarQuizz()" data-identifier="create-quizz"></ion-icon>
                     </div>
-                    <ul class="quizz-criado esconder">
+                    <ul class="quizz-criado" data-identifier="user-quizzes" >
                     </ul>
                 </div>
                 
                 <div class="tela-quizzes-api">
                     <div class="quizzes">
                         <p>Todos os Quizzes</p>
-                        <ul class="alto">
+                        <ul class="alto" data-identifier="general-quizzes">
                         </ul>
                     </div>
                 </div>

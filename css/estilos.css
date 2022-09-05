@@ -78,7 +78,17 @@ header{
 
     color: #B9B9B9;
 }
+.quizz-criado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
+.botao-vermelho{
+    font-size: 34px;
+     color: red;
+}
 .criar-quizz{
     box-sizing: border-box;
 
@@ -122,9 +132,7 @@ p{
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
- 
-    
+    word-break: break-all;
    
 }
 
@@ -399,7 +407,8 @@ color: #FFFFFF;
     font-size: 23px;
     font-weight: bold;
     margin: 130px auto 0 auto;
-    width: 280px;
+    display: flex;
+    justify-content: center;
   }
   
   .quiz-form {
@@ -499,12 +508,15 @@ color: #FFFFFF;
     margin:70px auto 0 auto;
     border: none;
   }
-
+  .quiz-pronto{
+    display: flex;
+    justify-content: center;
+  }
   .quiz-pronto img{
    width:500px;
    height:266px;
    border-radius:5px;
-   margin-left:380px ;
+   /* margin-left:380px ; */
    margin-top:20px
   }
   /* Fim Tela 3 */
@@ -518,6 +530,9 @@ color: #FFFFFF;
     }
     .tela-quizzes-pra-criar, .meus-quizzes{
         width: 340px;
+    }
+    .meus-quizzes{
+        flex-direction: row;
     }
     .corpo{
         align-items: center;
