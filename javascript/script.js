@@ -80,12 +80,14 @@ function exibirQuizz (resposta){
 
 
 
-
+let cliques = 0;
+let acertos = 0;
+let idQuizz;
 
 function selecionarResposta (clique) {
   const campoRespostas = clique.parentNode;
   const campoPergunta = campoRespostas.parentNode;
-  const todasPerguntas = document.querySelector(".container-perguntas");
+  const todasPerguntas = document.querySelectorAll(".container-perguntas");
   const todasRespostas = campoRespostas.querySelectorAll(".alternativas");
 
   for (let i = 0; i < todasRespostas.length; i++) {
@@ -95,7 +97,7 @@ function selecionarResposta (clique) {
 
   removerClique(todasRespostas);
   marcarResposta(campoRespostas, clique);
-  scrollarPergunta(campoPergunta, todasPerguntas);
+  scrolarPagina(campoPergunta, todasPerguntas);
 }
  
 
@@ -111,18 +113,67 @@ function marcarResposta(campoRespostas, element) {
   }
 
   if (conferirAcerto(element)) {
-      acertos++;
-  }
-
+    acertos++;
 }
 
-function removerClique (arrRespostas) {
-  for (let i = 0; i < arrRespostas.length; i++) {
-      arrRespostas[i].removeAttribute("onclick");
-  }
+cliques++;
 }
 
 
+
+function removerClique (clique) {
+  for (let i = 0; i < clique.length; i++) {
+      clique[i].removeAttribute("onclick");
+  }
+}
+
+function conferirAcerto (resposta) {
+  if (resposta.classList.contains("correta")) {
+      return true;
+  }
+  return false;
+}
+
+
+
+
+function scrolarPagina (campoPergunta, todasPerguntas) {
+  if (cliques === todasPerguntas.length) {
+      exibirResultado();
+      return;
+  }
+
+  for (let i = 0; i < todasPerguntas.length; i++) {
+      if (campoPergunta === todasPerguntas[todasPerguntas.length - 1]) {
+          return;
+      }
+
+      if (campoPergunta === todasPerguntas[i]) {
+          setTimeout(function () {
+              todasPerguntas[i+1].scrollIntoView({block: "start", behavior: "smooth"});
+          }, 1000);
+      }
+  }
+}
+
+     
+  
+
+  function calcularNivel () {
+
+    const perguntas = quiz.questions.length;
+    const porcentagem = Math.round((acertos/perguntas)*100);
+    let nivel;
+
+    for (let i = 0; i < quiz.levels.length; i++) {
+        if (porcentagem >= quiz.levels[i].minValue) {
+            nivel = i;
+        }
+    }
+    
+    const resultadoObj = {porcentagem: porcentagem, nivelIndex: nivel};
+    return resultadoObj;
+}
 
 
 
@@ -147,7 +198,54 @@ function entrarQuizz (el) {
 }
 
 
+function exibirResultado (){
 
+   const resultado = calcularNivel();
+   const nivel = quiz.levels[resultado.nivelIndex];
+   const container2 = document.querySelector(".conteudoPerguntasTela2");
+        container2.innerHTML += `
+        <div class="quiz-finalizado">
+            <div class="titulo-quiz-finalizado">
+                <h2>${resultado.porcentagem }% de acerto: ${nivel.title}</h2>
+            </div>
+            <div class="resultado">
+                <img src="${nivel.image}">
+                <p>${nivel.text}</p>
+            </div>
+        </div>
+        <section class="botoes-navegar">
+            <button class="botao-reiniciar" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+            <button class="voltar-home" onclick="voltarTelaInicial()">Voltar para home</button>
+        </section>`;
+
+        setTimeout(function (){
+          document.querySelector(".quiz-finalizado").scrollIntoView({block: "center", behavior: "smooth"});
+      }, 2000);
+       
+}
+
+function voltarTelaInicial () {
+  
+  document.querySelector(".corpo").classList.remove("esconder");
+  document.querySelector(".segunda-tela").classList.add("esconder");
+  window.scrollTo({top: 0});
+  pegaQuizes();
+}
+
+function reiniciarQuizz (){
+
+    acertos = 0;
+    cliques = 0;
+    window.scrollTo({top: 0, behavior: "smooth"});
+    buscarQuizz(idQuizz);
+    
+}
+
+
+  
+
+
+  
 // fim tela 2
 
 
